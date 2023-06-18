@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ profession.title }} :: {{block.super}}
+{% endblock %}
+
+{% block sidebar %}
+{% include 'inc_human\_sidebar.html' %}
+{% endblock %}
+{% block content %}
+{% include 'inc_human/_content.html'%}
+{% endblock %}

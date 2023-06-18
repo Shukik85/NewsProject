@@ -1,0 +1,23 @@
+
+<div class="col-md-8">
+    {% for item in users %}
+    <div class="card 3">
+      <div class="card-header">
+          {% if item.photo %}
+            <img src="{{ item.photo.url }}" alt="" width="350" class="mr-3">
+          {% else %}
+            <img src="https://picsum.photos/id/1060/350/235/?blur=2" alt="" width="350" class="mr-3">
+          {% endif %}
+          <h5 class="card-title">{{item.name}} {{item.surname}}</h5>
+          Профессия: {{item.profession.title}}
+      </div>
+      <div class="card-body">
+          <p class="card-text">{{item.info}}</p>
+          <a href="#" class="btn btn-primary">Read more...</a>
+      </div>
+      <div class="card-footer text-body-secondary">
+          {{item.created_at|date:'Y-m-d H:i'}}
+      </div>
+      </div>
+    {% endfor %}
+</div>

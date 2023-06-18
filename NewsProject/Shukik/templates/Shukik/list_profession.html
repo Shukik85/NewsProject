@@ -1,0 +1,11 @@
+{% load human_tags %}
+
+<div class="col-md-3">
+    <div class="list-group">
+        {% for prof in professions %}
+            <a href="{%url 'Profession' prof.id%}" class="list-group-item list-group-item-action">
+                {{prof.title}}
+            </a>
+        {% endfor %}
+    </div>            
+  </div>
