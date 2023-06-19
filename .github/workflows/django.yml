@@ -27,6 +27,3 @@ jobs:
         pip install Django  
         python -m pip install Pillow
         
-    - name: Run server
-      run: |
-        python manage.py runserver
