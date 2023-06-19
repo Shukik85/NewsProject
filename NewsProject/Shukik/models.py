@@ -1,4 +1,6 @@
 from django.db import models
+from django.urls import reverse_lazy
+
 
 
 class Human(models.Model):
@@ -19,6 +21,9 @@ class Human(models.Model):
 
 class Profession(models.Model):
     title = models.CharField(max_length=150, db_index=True, verbose_name='профессия')
+
+    def get_absolute_url(self):
+        return reverse_lazy('Profession', kwargs={'profession_id': self.pk})
 
     class Meta:
         verbose_name = 'Профессия'

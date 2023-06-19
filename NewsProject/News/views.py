@@ -20,3 +20,11 @@ def get_category(request, category_id):
         'title': 'Список новостей'
     }
     return render(request, 'News/category.html', context=context)
+
+def view_news(request, news_id):
+    news = News.objects.get(pk=news_id)
+    context = {
+        'news': news,
+        'title': news.title
+    }
+    return render(request, 'News/news.html', context=context)
