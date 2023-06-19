@@ -28,4 +28,4 @@ jobs:
         python -m pip install Pillow
     - name: Run
       run: |
-        python manage.py
+        python manage.py runserver
