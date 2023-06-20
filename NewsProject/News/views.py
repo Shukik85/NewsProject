@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from .models import News, Category
 
 # Create your views here.
@@ -22,7 +22,8 @@ def get_category(request, category_id):
     return render(request, 'News/category.html', context=context)
 
 def view_news(request, news_id):
-    news = News.objects.get(pk=news_id)
+    # news = News.objects.get(pk=news_id)
+    news = get_object_or_404(News, pk=news_id)
     context = {
         'news': news,
         'title': news.title
