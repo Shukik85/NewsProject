@@ -2,7 +2,6 @@
 
 {% block title %}
 {{ title }} :: {{block.super}}
-{% comment %} {{ category.title }} :: {{block.super}} {% endcomment %}
 {% endblock %}
 
 {% block sidebar %}
@@ -10,5 +9,5 @@
 {% endblock %}
 
 {% block content %}
-{% include 'inc/_content.html'%}
+{% include 'inc/_add_content_news.html'%}
 {% endblock %}

@@ -1,6 +1,6 @@
 
 <div class="col-md-8">
-    {% for item in users %}
+    {% for item in humans %}
     <div class="card 3">
       <div class="card-header">
           {% if item.photo %}
@@ -9,12 +9,15 @@
             <img src="https://picsum.photos/id/1060/350/235/?blur=2" alt="" width="350" class="mr-3">
           {% endif %}
           <h5 class="card-title">{{item.name}} {{item.surname}}</h5>
-          Профессия: {{item.profession.title}}
+          Профессия: <a href="{{item.profession.get_absolute_url}}"> {{item.profession.title}}</a>
       </div>
-      <div class="card-body">
-          <p class="card-text">{{item.info}}</p>
-          <a href="#" class="btn btn-primary">Read more...</a>
-      </div>
+        <div class="media-body">
+            <div class="card-body">
+                <h5 class="card-title">{{item.name}}</h5>
+                <p class="card-text">{{item.info|truncatewords:60|linebreaks}}</p>
+                <a href="{{item.get_absolute_url}}" class="btn btn-primary">Read more...</a>
+            </div>
+        </div>
       <div class="card-footer text-body-secondary">
           {{item.created_at|date:'Y-m-d H:i'}}
       </div>

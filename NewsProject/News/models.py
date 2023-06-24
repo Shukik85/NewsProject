@@ -12,7 +12,7 @@ class News(models.Model):
     category = models.ForeignKey('Category', on_delete=models.PROTECT, null=True, verbose_name='Категория')
 
     def get_absolute_url(self):
-        return reverse_lazy('News', kwargs={'news_id': self.pk})
+        return reverse_lazy('News', kwargs={'pk': self.pk})
 
     class Meta:
         verbose_name = 'Новость'

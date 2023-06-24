@@ -13,6 +13,9 @@ class Human(models.Model):
     is_admin = models.BooleanField(default=False, verbose_name='администратор')
     profession = models.ForeignKey('Profession', on_delete=models.PROTECT, null=True, verbose_name='профессия')
 
+    def get_absolute_url(self):
+        return reverse_lazy('Human', kwargs={'human_id': self.pk})
+
     class Meta:
         verbose_name = 'Человек'
         verbose_name_plural = 'Люди'

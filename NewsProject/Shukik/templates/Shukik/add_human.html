@@ -2,13 +2,12 @@
 
 {% block title %}
 {{ title }} :: {{block.super}}
-{% comment %} {{ category.title }} :: {{block.super}} {% endcomment %}
 {% endblock %}
 
 {% block sidebar %}
-{% include 'inc/_sidebar.html' %}
+{% include 'inc_human/_sidebar.html' %}
 {% endblock %}
 
 {% block content %}
-{% include 'inc/_content.html'%}
+{% include 'inc_human/_add_content_human.html'%}
 {% endblock %}
