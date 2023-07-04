@@ -27,4 +27,5 @@ jobs:
         pip install -r requirement.txt
     - name: Run Tests
       run: |
-        NewsProject/python manage.py test
+        cd NewsProject
+        python manage.py test
