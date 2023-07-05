@@ -27,5 +27,6 @@ jobs:
         pip install -r requirement.txt
     - name: Run Tests
       run: |
+        & .venv/Scripts/activate
         cd NewsProject
         python passenger_wsgi.py
