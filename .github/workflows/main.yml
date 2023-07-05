@@ -27,6 +27,6 @@ jobs:
         pip install -r requirement.txt
     - name: Run Tests
       run: |
-        cd ../
+        ls
         python manage.py collectstatic
         python passenger_wsgi.py
