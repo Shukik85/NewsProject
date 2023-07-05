@@ -28,5 +28,4 @@ jobs:
     - name: Run Tests
       run: |
         cd NewsProject
-        python manage.py collectstatic
         python passenger_wsgi.py
