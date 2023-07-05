@@ -27,6 +27,6 @@ jobs:
         pip install -r requirement.txt
     - name: Run Tests
       run: |
-        CD NewsProject
+        cd /NewsProject
         python manage.py collectstatic
         python passenger_wsgi.py
