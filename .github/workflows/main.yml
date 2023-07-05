@@ -22,10 +22,10 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
     - name: install venv311
-    - run: |
+      run: |
         /opt/alt/python311/bin/virtualenv --python /opt/alt/python311/bin/python3 venv311
     - name: run venv311
-    - run: |
+      run: |
         source ./venv311/bin/activate
     - name: Install Dependencies
       run: |
