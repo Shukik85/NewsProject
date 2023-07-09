@@ -2,10 +2,11 @@ from django import forms
 from .models import Human
 import re
 from django.core.exceptions import ValidationError
+from captcha.fields import CaptchaField
 
 
 class HumanForm(forms.ModelForm):
-    
+    captcha = CaptchaField()
     def clean_name(self):
         name = self.cleaned_data['name']
         if re.match(r'\d', name):
@@ -26,6 +27,8 @@ class HumanForm(forms.ModelForm):
             'name': forms.TextInput(attrs={'class': 'form-control'}),
             'info': forms.Textarea(attrs={'class': 'form-control', 'rows': 5}),
             'profession': forms.Select(attrs={'class': 'form-control'}),
+            'surname': forms.TextInput(attrs={'class': 'form-control'}),
+            'email': forms.TextInput(attrs={'class': 'form-control'}),
         }
     
     # name = forms.CharField(max_length=150, label='Заголовок', required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))

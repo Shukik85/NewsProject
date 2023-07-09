@@ -23,7 +23,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('shukik/', include('Shukik.urls')),
     path('news/', include('News.urls')),
-    path('reg/', include('register.urls'))
+    path('reg/', include('register.urls')),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('captcha/', include('captcha.urls')),
 ]
 
 if settings.DEBUG:
