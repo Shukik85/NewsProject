@@ -10,10 +10,11 @@ class HumanViews(ListView):
     context_object_name = 'human'
     template_name = 'Shukik/index.html'
     extra_context = {'title': 'Люди'}
+    paginate_by = 2
     
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'ЛюдиКонтекст'
+        context['title'] = 'Люди'
         return context
     
     def get_queryset(self) -> QuerySet[Any]:
@@ -23,6 +24,7 @@ class HumanViews(ListView):
 class HumanProfession(ListView):
     context_object_name = 'human'
     template_name = 'Shukik/profession.html'
+    paginate_by = 2
     
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)

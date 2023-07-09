@@ -2,15 +2,20 @@ from typing import Any
 from django.db.models.query import QuerySet
 from django.views.generic import CreateView, DetailView, ListView
 from django.shortcuts import get_object_or_404, redirect, render
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.paginator import Paginator
 
 from .forms import NewsForm
 from .models import News, Category
+from .utils import MyMixin
 
-class HomeNews(ListView):
+
+class HomeNews(ListView, MyMixin):
     model = News
     context_object_name = 'news'
     template_name = 'News/index.html'
     extra_context = {'title': 'Главная'}
+    paginate_by = 2
     
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -26,6 +31,7 @@ class NewsByCategory(ListView):
     context_object_name = 'news'
     template_name = 'News/category.html'
     allow_empty = False
+    paginate_by = 2
     
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -50,6 +56,8 @@ class AddNews(CreateView):
     form_class = NewsForm
     template_name = 'News/add_news.html'
     extra_context = {'title': 'Добавить новость'}
+    login_url = 'admin/'
+
     
 
 # Create your views here.

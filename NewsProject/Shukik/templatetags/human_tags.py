@@ -1,5 +1,6 @@
 from Shukik.models import Profession
 from django import template
+from django.db.models import Count
 
 register = template.Library()
 
@@ -9,5 +10,5 @@ register = template.Library()
 
 @register.inclusion_tag('shukik/list_profession.html')
 def show_list():
-    professions = Profession.objects.all()
+    professions = Profession.objects.annotate(cnt=Count('human')).filter(cnt__gt=0)
     return {'professions': professions}
