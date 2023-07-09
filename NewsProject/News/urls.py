@@ -1,6 +1,7 @@
 from django.urls import path, include
 
-from News.views import HomeNews, NewsByCategory, ViewNews,AddNews
+from News.views import HomeNews, NewsByCategory, ViewNews, AddNews
+# from News.views import login, register
 #from News.views import index, get_category, view_news,add_news, test
 
 
@@ -9,9 +10,9 @@ urlpatterns = [
     path('', HomeNews.as_view(), name='News'),
     path('category/<int:category_id>', NewsByCategory.as_view(), name='Category'),
     path('<int:pk>', ViewNews.as_view(), name='News'),
-    path('news/add_news', AddNews.as_view(), name='Add_news'),
-    path('shukik/', include('Shukik.urls')),
-    
+    path('add_news/', AddNews.as_view(), name='Add_news'),
+    # path('shukik/', include('Shukik.urls')),
+    # path('reg/', include('register.urls'))
     # path('test/', test, name='Test'),    
     # path('', index, name='News'),
     # path('category/<int:category_id>', get_category, name='Category'),

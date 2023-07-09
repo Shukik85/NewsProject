@@ -1,13 +1,32 @@
 from typing import Any
 from django.db.models.query import QuerySet
+from django.urls import is_valid_path
 from django.views.generic import CreateView, DetailView, ListView
 from django.shortcuts import get_object_or_404, redirect, render
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib import messages
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.core.paginator import Paginator
 
 from .forms import NewsForm
 from .models import News, Category
 from .utils import MyMixin
+
+# def register(request):
+#     if request.method == 'POST':
+#         form = UserCreationForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             messages.success(request, 'Регистрация прошла успешно!')
+#             return redirect('Login')
+#         else:
+#             messages.error(request, 'Ошибка регистрации.')
+#     else:
+#         form = UserCreationForm()
+#     return render(request, 'News/register.html', {'form': form, 'title': 'Регистрация'})
+
+# def login(request):
+#     form = UserChangeForm()
+#     return render(request, 'News/login.html', {'form': form, 'title': 'Вход'})
 
 
 class HomeNews(ListView, MyMixin):

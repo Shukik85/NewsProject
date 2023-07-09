@@ -14,9 +14,22 @@
         <h1>{{title}}</h1>
         <div class="row ">
             {% block sidebar %}SIDEBAR{% endblock %}
+            {% if messages %}
+            {% for message in messages %}
+              {% if message.tags == 'error' %}
+              <div class="alert alert-danger" role="alert">
+                {{ message }}
+              </div>
+              {% else %}
+              <div class="alert alert-{{message.tags}}" role="alert">
+                {{ message }}
+              </div>
+              {% endif %}
+            {% endfor %}
+            {% endif %}
             {% block content %}CONTENT{% endblock %}			
         </div>
-        {%if page_obj.has_other_pages%}
+        {% if page_obj.has_other_pages %}
         <nav class="d-flex justify-content-center" aria-label="...">
           <ul class="pagination">
             {% if page_obj.has_previous %}
@@ -24,12 +37,12 @@
               <a class="page-link" href="?page={{page_obj.previous_page_number}}">Пред...</a>
             </li>
             {% endif %}
-            {% for p in page_obj.paginator.page_range%}
+            {% for p in page_obj.paginator.page_range %}
             {% if page_obj.number == p %}
             <li class="page-item active" aria-current="page">
-              <a class="page-link" href="?page={{p}}">{{p}}<span class="sr-only">(current)</span></a>
+              <a class="page-link" href="?page={{p}}">{{ p }}<span class="sr-only">(current)</span></a>
             </li>
-            {% elif p > page_obj.number|add:-3 and p < page_obj.number|add:3%}
+            {% elif p > page_obj.number|add:-3 and p < page_obj.number|add:3 %}
             <li class="page-item">
               <a class="page-link" href="?page={{p}}">{{p}}</a>
             </li>
