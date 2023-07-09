@@ -50,6 +50,7 @@ class AddHuman(CreateView):
     form_class = HumanForm
     template_name = 'Shukik/add_human.html'
     extra_context = {'title': 'Добавить человека'}
+    login_url = 'admin/'
     
     
 # def index(request):

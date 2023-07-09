@@ -10,6 +10,8 @@ class NewsAdmin(admin.ModelAdmin):
     search_fields = ('title', 'content',)
     list_filter = ('id', 'is_published',)
     list_editable = ('category', 'is_published',)
+    fields = ('category','title', 'content', 'photo', 'get_photo', 'is_published', 'created_at', 'updated_at')
+    readonly_fields = ('get_photo', 'created_at', 'updated_at')
 
     def get_photo(self, obj):
         if obj.photo:
@@ -28,3 +30,6 @@ class CategoryAdmin(admin.ModelAdmin):
 
 admin.site.register(News, NewsAdmin)
 admin.site.register(Category, CategoryAdmin)
+
+admin.site.site_title = 'Страница администратора'
+admin.site.site_header = 'Страница администратора'
