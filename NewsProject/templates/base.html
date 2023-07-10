@@ -1,5 +1,6 @@
 <!doctype html>
-{%load static%}
+{% load static %}
+{% load cache %}
 <html lang="ru">
   <head>
     <meta charset="utf-8">
@@ -13,7 +14,9 @@
     <div class="container-fluid p-5">
         <h1>{{title}}</h1>
         <div class="row ">
+          {% comment %} {% cache 500 sidebar %} {% endcomment %}
             {% block sidebar %}SIDEBAR{% endblock %}
+          {% comment %} {% endcache %} {% endcomment %}
             {% if messages %}
             {% for message in messages %}
               {% if message.tags == 'error' %}
@@ -40,7 +43,7 @@
             {% for p in page_obj.paginator.page_range %}
             {% if page_obj.number == p %}
             <li class="page-item active" aria-current="page">
-              <a class="page-link" href="?page={{p}}">{{ p }}<span class="sr-only">(current)</span></a>
+              <a class="page-link" href="?page={{p}}">{{ p }}<span class="sr-only"></span></a>
             </li>
             {% elif p > page_obj.number|add:-3 and p < page_obj.number|add:3 %}
             <li class="page-item">
