@@ -31,3 +31,12 @@ jobs:
       run: |
         cd NewsProject
         python manage.py runserver
+  deploy:
+    permissions:
+      contents: none
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: 'Development'
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+
